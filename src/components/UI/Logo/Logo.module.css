@@ -1,0 +1,13 @@
+.Logo{
+    height: 100%;
+    width: calc(100px + 3vw);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-family: 'Grandstander', cursive;
+    font-size: 25px;
+    color: white;
+}

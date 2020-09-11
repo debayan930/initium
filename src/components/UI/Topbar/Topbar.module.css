@@ -1,3 +1,11 @@
 .Topbar{
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(40px + 1vh);
+    background: rgb(171, 24, 139);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
