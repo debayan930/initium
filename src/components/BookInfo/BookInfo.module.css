@@ -1,0 +1,22 @@
+.BookInfo{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+}
+
+.Title{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.Series{
+    font-size: 80%;
+    color: rgb(56, 55, 55);
+    margin-bottom: 10px;
+}
+
+.Author{
+    font-size: 75%;
+}

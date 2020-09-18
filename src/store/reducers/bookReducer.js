@@ -2,7 +2,8 @@ import * as actions from '../actionTypes';
 
 const initialState = {
     genres: [],
-    books: []
+    books: [],
+    bookCount: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 books: action.payload
+            }
+
+        case actions.FETCH_BOOK_COUNT:
+            return {
+                ...state,
+                bookCount: action.payload
             }
 
         default:

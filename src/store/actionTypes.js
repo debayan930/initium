@@ -1,2 +1,3 @@
 export const FETCH_GENRES = 'FETCH_GENRES';
 export const FETCH_BOOKS = 'FETCH_BOOKS';
+export const FETCH_BOOK_COUNT = 'FETCH_BOOK_COUNT';

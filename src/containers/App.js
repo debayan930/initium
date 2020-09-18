@@ -1,36 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from '../hoc/Layout/Layout';
-import { fetchBooks, fetchGenres } from '../store/actions/bookActions';
+import { fetchGenres } from '../store/actions/bookActions';
 import { connect } from 'react-redux';
-import Aux from '../hoc/Auxiliary/Auxiliary';
+import Spinner from '../components/UI/Spinner/Spinner';
+const Books = lazy(() => import('./Books/Books'));
 
 class App extends Component {
   componentDidMount(){
     this.props.fetchGenres();
   }
 
-  helloHandler = (offset) => {
-    this.props.fetchBooks(offset);
-  }
-
   render(){
     return(
       <BrowserRouter>
         <Layout>
-          <Switch>
-            <Route path='/' exact render={() => {
-              return (
-                <Aux>
-                  {/* <button onClick={() => this.helloHandler(0)}>1</button>
-                  <button onClick={() => this.helloHandler(10)}>2</button>
-                  <button onClick={() => this.helloHandler(20)}>3</button>
-                  <button onClick={() => this.helloHandler(30)}>4</button> */}
-                </Aux>
-              );
-            }} />
-          </Switch>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <Route path='/books' exact component={Books} />
+            </Switch>
+          </Suspense>
         </Layout>
       </BrowserRouter>
     );
@@ -46,8 +36,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchGenres: () => dispatch(fetchGenres()),
-    fetchBooks: (offset) => dispatch(fetchBooks(offset))
+    fetchGenres: () => dispatch(fetchGenres())
   }
 };
 
