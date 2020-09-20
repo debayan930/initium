@@ -17,15 +17,23 @@ class Books extends Component{
 
     pageSelectHandler = (num) => {
         this.setState(prevState => {
-            if(num in [1,2, Math.floor(this.props.bookCount/20), Math.floor(this.props.bookCount/20) + 1]){
+            if(num !== 1 && num === prevState.start){
                 return {
-                    currentPage: num
+                    currentPage: num,
+                    start: prevState.start - 1,
+                    end: prevState.end - 1
                 }
-            } else {
+            }else if(num !== Math.ceil(this.props.bookCount/20) && num === prevState.end){
                 return {
                     currentPage: num,
                     start: prevState.start + 1,
                     end: prevState.end + 1
+                }
+            }else{
+                return {
+                    currentPage: num,
+                    leftClickable: num !== 1,
+                    rightClickable: num !== Math.ceil(this.props.bookCount/20)
                 }
             }
         })
@@ -35,7 +43,9 @@ class Books extends Component{
         this.setState({
             currentPage: 1,
             start: 1,
-            end: 5
+            end: 5,
+            leftClickable: false,
+            rightClickable: true
         })
     }
 
@@ -43,44 +53,50 @@ class Books extends Component{
         this.setState({
             currentPage: Math.ceil(this.props.bookCount/20),
             start: Math.ceil(this.props.bookCount/20) - 4,
-            end: Math.ceil(this.props.bookCount/20)
+            end: Math.ceil(this.props.bookCount/20),
+            leftClickable: true,
+            rightClickable: false
         })
     }
 
     moveLeftHandler = () => {
         this.setState(prevState => {
-            return {
-                currentPage: prevState.currentPage - 1,
-                start: prevState.start - 1,
-                end: prevState.end - 1
+            if(prevState.currentPage === 2){
+                return {
+                    currentPage: 1,
+                    start: 1,
+                    end: 5,
+                    leftClickable: false,
+                    rightClickable: true
+                }
+            }else{
+                return {
+                    currentPage: prevState.currentPage - 1,
+                    start: prevState.start - 1,
+                    end: prevState.end - 1
+                }
             }
         })
     }
 
     moveRightHandler = () => {
         this.setState(prevState => {
-            return {
-                currentPage: prevState.currentPage + 1,
-                start: prevState.start + 1,
-                end: prevState.end + 1
+            if(prevState.currentPage === Math.ceil(this.props.bookCount)-1){
+                return {
+                    currentPage: Math.ceil(this.props.bookCount/20),
+                    start: Math.ceil(this.props.bookCount/20) - 4,
+                    end: Math.ceil(this.props.bookCount/20),
+                    leftClickable: true,
+                    rightClickable: false
+                }
+            }else{
+                return {
+                    currentPage: prevState.currentPage + 1,
+                    start: prevState.start + 1,
+                    end: prevState.end + 1
+                }
             }
         })
-    }
-
-    moveLeftDisabledCheckHandler = () => {
-        if(this.state.currentPage === 1){
-            return true;
-        } else {
-            return false
-        }
-    }
-
-    moveRightDisabledCheckHandler = () => {
-        if(this.state.currentPage === Math.ceil(this.props.bookCount/20)){
-            return true;
-        } else {
-            return false
-        }
     }
 
     componentDidMount(){
@@ -97,11 +113,13 @@ class Books extends Component{
                 start={this.state.start}
                 end={this.state.end}
                 chosen={this.state.currentPage}
+                leftClickable={this.leftClickable}
+                rightClickable={this.rightClickable}
                 pageSelectHandler={this.pageSelectHandler}
                 goToFirstHandler={this.goToFirstHandler}
                 goToLastHandler={this.goToLastHandler}
-                moveLeftDisabledCheckHandler={this.moveLeftDisabledCheckHandler}
-                moveRightDisabledCheckHandler={this.moveRightDisabledCheckHandler}
+                moveRightHandler={this.moveRightHandler}
+                moveLeftHandler={this.moveLeftHandler}
             />
         </Aux>
         );

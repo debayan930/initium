@@ -9,18 +9,18 @@ const Pagination = (props) => {
     
     return(
         <div className={classes.Pagination}>
-            <button onClick={props.goToFirstHandler}>{'<<'}</button>
-            <button disabled={props.moveLeftDisabledCheckHandler} onClick={props.moveLeftHandler}>{'<'}</button>
+            <button onClick={props.goToFirstHandler} disabled={!props.leftClickable}>{'<<'}</button>
+            <button onClick={props.moveLeftHandler} disabled={!props.leftClickable}>{'<'}</button>
             {
                 arr.map(item => {
                     if(parseInt(item) === parseInt(props.chosen))
                         return <button key={item} style={{backgroundColor: 'cyan'}}>{item}</button>
                     else
-                        return <button key={item}>{item}</button>
+                        return <button key={item} onClick={() => props.pageSelectHandler(item)}>{item}</button>
                 })
             }
-            <button disabled={props.moveRightDisabledCheckHandler} onClick={props.moveRightHandler}>{'>'}</button>
-            <button onClick={props.goToLastHandler}>{'>>'}</button>
+            <button onClick={props.moveRightHandler} disabled={!props.rightClickable}>{'>'}</button>
+            <button onClick={props.goToLastHandler} disabled={!props.rightClickable}>{'>>'}</button>
         </div>
     )
 };
