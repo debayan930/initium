@@ -2,8 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 button{
-    margin: 0 5px;
+    margin: 0 2px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background-color: rgb(155, 155, 155);
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+}
+
+button:disabled{
+    cursor: not-allowed;
 }

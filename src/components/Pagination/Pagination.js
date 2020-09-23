@@ -14,7 +14,7 @@ const Pagination = (props) => {
             {
                 arr.map(item => {
                     if(parseInt(item) === parseInt(props.chosen))
-                        return <button key={item} style={{backgroundColor: 'cyan'}}>{item}</button>
+                        return <button key={item} style={{backgroundColor: 'rgb(171, 24, 139)'}}>{item}</button>
                     else
                         return <button key={item} onClick={() => props.pageSelectHandler(item)}>{item}</button>
                 })

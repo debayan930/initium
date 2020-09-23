@@ -22,6 +22,13 @@ const updateBookCount = (count) => (
     }
 );
 
+const updateBooksLoading = (flag) => (
+    {
+        type: actions.FETCH_LOADING_STATUS,
+        payload: flag
+    }
+);
+
 export const fetchGenres = () => (
     dispatch => {
         axios.get('/genres.json')
@@ -32,9 +39,13 @@ export const fetchGenres = () => (
 
 export const fetchBooks = (offset = 0) => (
     dispatch => {
+        dispatch(updateBooksLoading(true));
         const link = offset === 0 ? '/books.json?orderBy="id"&startAt=0&limitToFirst=20' : `/books.json?orderBy="id"&startAt=${offset+1}&limitToFirst=20`;
         axios.get(link)
-            .then(response => dispatch(updateBooks(response.data)))
+            .then(response => {
+                dispatch(updateBooks(response.data));
+                dispatch(updateBooksLoading(false));
+            })
             .catch(error => console.log(error));
     }
 );

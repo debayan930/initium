@@ -3,7 +3,8 @@ import * as actions from '../actionTypes';
 const initialState = {
     genres: [],
     books: [],
-    bookCount: 0
+    bookCount: 0,
+    loading: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 bookCount: action.payload
+            }
+
+        case actions.FETCH_LOADING_STATUS:
+            return {
+                ...state,
+                loading: action.payload
             }
 
         default:

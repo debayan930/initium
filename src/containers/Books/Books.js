@@ -135,8 +135,8 @@ class Books extends Component{
     }
 
     render(){
-        return(
-           this.props.books.length === 0 ? <Spinner /> : 
+        return( 
+            this.props.loading ? <Spinner /> :
         <Aux>
             <BookList books={this.props.books} />
             <Pagination
@@ -159,7 +159,8 @@ class Books extends Component{
 const mapStateToProps = state => {
     return {
         books: state.bookReducer.books,
-        bookCount: state.bookReducer.bookCount
+        bookCount: state.bookReducer.bookCount,
+        loading: state.bookReducer.loading
     }
 }
 
