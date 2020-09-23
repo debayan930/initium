@@ -32,7 +32,7 @@ export const fetchGenres = () => (
 
 export const fetchBooks = (offset = 0) => (
     dispatch => {
-        const link = offset === 0 ? '/books.json?orderBy="id"&startAt=0&limitToFirst=20' : '/books.json?orderBy="id"&startAt=' + (offset+1) + '&limitToFirst=20';
+        const link = offset === 0 ? '/books.json?orderBy="id"&startAt=0&limitToFirst=20' : `/books.json?orderBy="id"&startAt=${offset+1}&limitToFirst=20`;
         axios.get(link)
             .then(response => dispatch(updateBooks(response.data)))
             .catch(error => console.log(error));

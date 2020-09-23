@@ -6,6 +6,8 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Pagination from '../../components/Pagination/Pagination';
 
+const RESULTS_PER_PAGE = 20;
+
 class Books extends Component{
     state = {
         currentPage: 1,
@@ -17,51 +19,61 @@ class Books extends Component{
 
     pageSelectHandler = (num) => {
         this.setState(prevState => {
+            this.props.fetchBooks((num-1)*RESULTS_PER_PAGE);
             if(num !== 1 && num === prevState.start){
                 return {
                     currentPage: num,
                     start: prevState.start - 1,
-                    end: prevState.end - 1
+                    end: prevState.end - 1,
+                    rightClickable: true
                 }
-            }else if(num !== Math.ceil(this.props.bookCount/20) && num === prevState.end){
+            }else if(num !== Math.ceil(this.props.bookCount/RESULTS_PER_PAGE) && num === prevState.end){
                 return {
                     currentPage: num,
                     start: prevState.start + 1,
-                    end: prevState.end + 1
+                    end: prevState.end + 1,
+                    leftClickable: true
                 }
             }else{
                 return {
                     currentPage: num,
                     leftClickable: num !== 1,
-                    rightClickable: num !== Math.ceil(this.props.bookCount/20)
+                    rightClickable: num !== Math.ceil(this.props.bookCount/RESULTS_PER_PAGE)
                 }
             }
         })
     }
 
     goToFirstHandler = () => {
-        this.setState({
-            currentPage: 1,
-            start: 1,
-            end: 5,
-            leftClickable: false,
-            rightClickable: true
+        this.setState(prevState => {
+            this.props.fetchBooks();
+            return {
+                currentPage: 1,
+                start: 1,
+                end: 5,
+                leftClickable: false,
+                rightClickable: true
+            }
         })
     }
 
     goToLastHandler = () => {
-        this.setState({
-            currentPage: Math.ceil(this.props.bookCount/20),
-            start: Math.ceil(this.props.bookCount/20) - 4,
-            end: Math.ceil(this.props.bookCount/20),
-            leftClickable: true,
-            rightClickable: false
+        this.setState(prevState => {
+            this.props.fetchBooks((Math.ceil(this.props.bookCount/RESULTS_PER_PAGE)-1)*RESULTS_PER_PAGE);
+            return {
+                currentPage: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE),
+                start: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE) - 4,
+                end: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE),
+                leftClickable: true,
+                rightClickable: false
+            }
         })
     }
 
     moveLeftHandler = () => {
         this.setState(prevState => {
             if(prevState.currentPage === 2){
+                this.props.fetchBooks();
                 return {
                     currentPage: 1,
                     start: 1,
@@ -69,11 +81,19 @@ class Books extends Component{
                     leftClickable: false,
                     rightClickable: true
                 }
+            }else if(prevState.start === 1){
+                this.props.fetchBooks((prevState.currentPage-2)*RESULTS_PER_PAGE);
+                return {
+                    currentPage: prevState.currentPage - 1,
+                    rightClickable: true
+                }
             }else{
+                this.props.fetchBooks((prevState.currentPage-2)*RESULTS_PER_PAGE);
                 return {
                     currentPage: prevState.currentPage - 1,
                     start: prevState.start - 1,
-                    end: prevState.end - 1
+                    end: prevState.end - 1,
+                    rightClickable: true
                 }
             }
         })
@@ -81,19 +101,29 @@ class Books extends Component{
 
     moveRightHandler = () => {
         this.setState(prevState => {
-            if(prevState.currentPage === Math.ceil(this.props.bookCount)-1){
+            if(prevState.currentPage === Math.ceil(this.props.bookCount/RESULTS_PER_PAGE)-1){
+                this.props.fetchBooks((Math.ceil(this.props.bookCount/RESULTS_PER_PAGE)-1)*RESULTS_PER_PAGE);
                 return {
-                    currentPage: Math.ceil(this.props.bookCount/20),
-                    start: Math.ceil(this.props.bookCount/20) - 4,
-                    end: Math.ceil(this.props.bookCount/20),
+                    currentPage: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE),
+                    start: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE) - 4,
+                    end: Math.ceil(this.props.bookCount/RESULTS_PER_PAGE),
                     leftClickable: true,
                     rightClickable: false
                 }
-            }else{
+            }else if(prevState.end === Math.ceil(this.props.bookCount/RESULTS_PER_PAGE)){
+                this.props.fetchBooks(prevState.currentPage*RESULTS_PER_PAGE);
+                return {
+                    currentPage: prevState.currentPage + 1,
+                    leftClickable: true
+                }
+            }
+            else{
+                this.props.fetchBooks(prevState.currentPage*RESULTS_PER_PAGE);
                 return {
                     currentPage: prevState.currentPage + 1,
                     start: prevState.start + 1,
-                    end: prevState.end + 1
+                    end: prevState.end + 1,
+                    leftClickable: true
                 }
             }
         })
@@ -113,8 +143,8 @@ class Books extends Component{
                 start={this.state.start}
                 end={this.state.end}
                 chosen={this.state.currentPage}
-                leftClickable={this.leftClickable}
-                rightClickable={this.rightClickable}
+                leftClickable={this.state.leftClickable}
+                rightClickable={this.state.rightClickable}
                 pageSelectHandler={this.pageSelectHandler}
                 goToFirstHandler={this.goToFirstHandler}
                 goToLastHandler={this.goToLastHandler}
@@ -135,7 +165,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchBooks: () => dispatch(fetchBooks()),
+        fetchBooks: (offset) => dispatch(fetchBooks(offset)),
         fetchBookCount: () => dispatch(fetchBookCount())
     }
 }

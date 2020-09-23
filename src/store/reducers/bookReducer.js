@@ -15,10 +15,16 @@ const reducer = (state = initialState, action) => {
             };
 
         case actions.FETCH_BOOKS:
+            let arr = [];
+            if(Array.isArray(action.payload)){
+                arr = action.payload.filter(item => item !== null);
+            }else{
+                arr = Object.values(action.payload);
+            }
             return {
                 ...state,
-                books: action.payload
-            }
+                books: arr
+            }    
 
         case actions.FETCH_BOOK_COUNT:
             return {
