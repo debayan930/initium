@@ -24,7 +24,7 @@ const Book = (props) => {
                     }
                 </div>
             </div>
-            <AddToCart>Add To Cart</AddToCart>
+            <AddToCart book={props.book} clicked={props.clicked}>Add To Cart</AddToCart>
         </div>
     );
 };

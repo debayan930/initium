@@ -6,6 +6,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Pagination from '../../components/Pagination/Pagination';
 import Modal from '../../components/UI/Modal/Modal';
+import BookToCart from '../../components/BookToCart/BookToCart';
 
 class Books extends Component{
     state = {
@@ -25,17 +26,26 @@ class Books extends Component{
         })
     }
 
+    chooseBookHandler = (book) => {
+        this.setState(prevState => {
+            return {
+                showModal: true,
+                chosenBook: book
+            }
+        })
+    }
+
     render(){
         return( 
             <Aux>
                 {this.props.loading ? <Spinner /> :
                 <Aux>
-                    <Modal show={this.state.showModal} clicked={this.modalClickedHandler}>
-                        Chosen Book
-                    </Modal>
+                    {this.state.chosenBook ? <Modal show={this.state.showModal} clicked={this.modalClickedHandler}>
+                        <BookToCart book={this.state.chosenBook} />
+                    </Modal> : null}
                     <BookList
                         books={this.props.books}
-                        clicked={this.modalClickedHandler}
+                        clicked={this.chooseBookHandler}
                     />
                 </Aux>
                 }
