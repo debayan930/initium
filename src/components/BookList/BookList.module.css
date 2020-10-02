@@ -1,6 +1,9 @@
 .BookList{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    padding: 10px;
+    padding: 10px 0;
     font-family: 'Balsamiq Sans', cursive;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }

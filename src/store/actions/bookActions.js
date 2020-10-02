@@ -1,5 +1,6 @@
 import * as actions from '../actionTypes';
 import axios from '../../axios';
+import * as constants from '../../assets/constants/Constants';
 
 const updateGenres = (genres) => (
     {
@@ -40,7 +41,7 @@ export const fetchGenres = () => (
 export const fetchBooks = (offset = 0) => (
     dispatch => {
         dispatch(updateBooksLoading(true));
-        const link = offset === 0 ? '/books.json?orderBy="id"&startAt=0&limitToFirst=20' : `/books.json?orderBy="id"&startAt=${offset+1}&limitToFirst=20`;
+        const link = offset === 0 ? `/books.json?orderBy="id"&startAt=0&limitToFirst=${constants.RESULTS_PER_PAGE}` : `/books.json?orderBy="id"&startAt=${offset+1}&limitToFirst=${constants.RESULTS_PER_PAGE}`;
         axios.get(link)
             .then(response => {
                 dispatch(updateBooks(response.data));

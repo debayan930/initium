@@ -5,7 +5,7 @@ import classes from './BookList.module.css';
 const BookList = (props) => (
     <div className={classes.BookList}>
         {
-            props.books.map(book => <Book key={book.id} book={book} />)
+            props.books.map(book => <Book key={book.id} book={book} clicked={props.clicked} />)
         }
     </div>
 );

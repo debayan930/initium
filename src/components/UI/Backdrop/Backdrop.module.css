@@ -1,0 +1,10 @@
+.Backdrop{
+    position: fixed;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(160, 160, 160, 0.6);
+    z-index: 150;
+}
