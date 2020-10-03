@@ -9,7 +9,7 @@ const Book = (props) => {
         <div className={classes.Book}>
             <div className={classes.Tooltip}>
 		        {
-                    props.book.formats.map(format => <span className={classes.Pricehover}>{format.format}&nbsp;&nbsp;₹&nbsp;{format.price}</span>)
+                    props.book.formats.map((format, id) => <span key={id} className={classes.Pricehover}>{format.format}&nbsp;&nbsp;₹&nbsp;{format.price}</span>)
                 }
 	        </div>
             <div className={classes.BookContent}>

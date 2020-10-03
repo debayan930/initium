@@ -2,11 +2,12 @@ import React from 'react';
 import BookInfo from '../BookInfo/BookInfo';
 import classes from './BookToCart.module.css';
 import GenreLabel from '../GenreLabel/GenreLabel';
+import ButtonControls from '../ButtonControls/ButtonControls';
 
 const BookToCart = (props) => (
     <div className={classes.BookToCart}>
         <img
-            src={`https://robohash.org/${props.book.id}.png?size=100x100&set=set1`}
+            src={`https://robohash.org/${props.book.id}.png?size=125x125&set=set1`}
             alt={props.book.id}
         />
         <div className={classes.BookContent}>
@@ -17,6 +18,10 @@ const BookToCart = (props) => (
                 }
             </div>
         </div>
+        <ButtonControls {...props} />
+        <label className={classes.Price}>
+            {props.bookToAdd.format.price}
+        </label>
     </div>
 );
 

@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import bookReducer from './store/reducers/bookReducer';
+import cartReducer from './store/reducers/cartReducer';
 import { Provider } from 'react-redux';
 
 const logger = store => next => action => next(action);
@@ -13,7 +14,8 @@ const logger = store => next => action => next(action);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  bookReducer: bookReducer
+  bookReducer: bookReducer,
+  cartReducer: cartReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));

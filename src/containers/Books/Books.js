@@ -11,7 +11,8 @@ import BookToCart from '../../components/BookToCart/BookToCart';
 class Books extends Component{
     state = {
         showModal: false,
-        chosenBook: null
+        chosenBook: null,
+        bookToAdd: null
     }
     
     componentDidMount(){
@@ -30,9 +31,43 @@ class Books extends Component{
         this.setState(prevState => {
             return {
                 showModal: true,
-                chosenBook: book
+                chosenBook: book,
+                bookToAdd: {
+                    id: book.id,
+                    title: book.title,
+                    author: book.author,
+                    language: book.languages[0],
+                    format: book.formats[0],
+                    quantity: 1
+                }
             }
         })
+    }
+
+    formatChooseHandler = (format) => {
+        this.setState(prevState => {
+            return {
+                bookToAdd: {
+                    ...prevState.bookToAdd,
+                    format: format
+                }
+            }
+        });
+    }
+
+    languageChooseHandler = (language) => {
+        this.setState(prevState => {
+            return {
+                bookToAdd: {
+                    ...prevState.bookToAdd,
+                    language: language
+                }
+            }
+        });
+    }
+
+    addToCartHandler = (book) => {
+
     }
 
     render(){
@@ -41,7 +76,12 @@ class Books extends Component{
                 {this.props.loading ? <Spinner /> :
                 <Aux>
                     {this.state.chosenBook ? <Modal show={this.state.showModal} clicked={this.modalClickedHandler}>
-                        <BookToCart book={this.state.chosenBook} />
+                        <BookToCart
+                            book={this.state.chosenBook}
+                            formatChooseHandler={this.formatChooseHandler}
+                            languageChooseHandler={this.languageChooseHandler}
+                            bookToAdd={this.state.bookToAdd}
+                        />
                     </Modal> : null}
                     <BookList
                         books={this.props.books}
