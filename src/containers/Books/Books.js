@@ -81,6 +81,7 @@ class Books extends Component{
                             formatChooseHandler={this.formatChooseHandler}
                             languageChooseHandler={this.languageChooseHandler}
                             bookToAdd={this.state.bookToAdd}
+                            closeModal={this.modalClickedHandler}
                         />
                     </Modal> : null}
                     <BookList

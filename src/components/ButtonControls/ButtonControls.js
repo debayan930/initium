@@ -22,11 +22,14 @@ const ButtonControls = (props) => (
             }
             </div>
         </div>
+        <label className={classes.Price}>
+            {props.bookToAdd.format.price}
+        </label>
         <div className={classes.ButtonContainer} style={{
             display: 'block'
         }}>
             <Button>Add to Cart</Button>
-            <Button cancel={true}>Cancel</Button>
+            <Button cancel={true} closeModal={props.closeModal}>Cancel</Button>
         </div>
     </div>
 );

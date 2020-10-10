@@ -19,9 +19,6 @@ const BookToCart = (props) => (
             </div>
         </div>
         <ButtonControls {...props} />
-        <label className={classes.Price}>
-            {props.bookToAdd.format.price}
-        </label>
     </div>
 );
 

@@ -128,3 +128,16 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(171, 24, 139, 1); 
   }
+
+  .Price{
+    display: block;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin-top: 20px;
+    font-size: 140%;
+}
+
+.Price::before{
+    content: "₹ ";
+    color: rgb(171, 24, 139);
+}
