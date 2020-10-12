@@ -139,18 +139,18 @@ class Pagination extends Component {
         
         return(
             <div className={classList}>
-                <button onClick={this.goToFirstHandler} disabled={!this.state.leftClickable}>{'<<'}</button>
-                <button onClick={this.moveLeftHandler} disabled={!this.state.leftClickable}>{'<'}</button>
+                <button className={classes.Button} onClick={this.goToFirstHandler} disabled={!this.state.leftClickable}>{'<<'}</button>
+                <button className={classes.Button} onClick={this.moveLeftHandler} disabled={!this.state.leftClickable}>{'<'}</button>
                 {
                     arr.map(item => {
                         if(parseInt(item) === parseInt(this.state.currentPage))
-                            return <button key={item} style={{backgroundColor: 'rgb(171, 24, 139)'}}>{item}</button>
+                            return <button className={classes.Button} key={item} style={{backgroundColor: 'rgb(171, 24, 139)'}}>{item}</button>
                         else
-                            return <button key={item} onClick={() => this.pageSelectHandler(item)}>{item}</button>
+                            return <button className={classes.Button} key={item} onClick={() => this.pageSelectHandler(item)}>{item}</button>
                     })
                 }
-                <button onClick={this.moveRightHandler} disabled={!this.state.rightClickable}>{'>'}</button>
-                <button onClick={this.goToLastHandler} disabled={!this.state.rightClickable}>{'>>'}</button>
+                <button className={classes.Button} onClick={this.moveRightHandler} disabled={!this.state.rightClickable}>{'>'}</button>
+                <button className={classes.Button} onClick={this.goToLastHandler} disabled={!this.state.rightClickable}>{'>>'}</button>
             </div>
         )
     }

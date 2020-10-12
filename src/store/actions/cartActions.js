@@ -13,3 +13,17 @@ export const removeFromCart = (book) => (
         payload: book
     }
 );
+
+export const addBookQuantity = (book) => (
+    {
+        type: actions.INCREASE_ITEM_QUANTITY,
+        payload: book
+    }
+);
+
+export const removeBookQuantity = (book) => (
+    {
+        type: actions.DECREASE_ITEM_QUANTITY,
+        payload: book
+    }
+);

@@ -7,6 +7,7 @@ import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Pagination from '../../components/Pagination/Pagination';
 import Modal from '../../components/UI/Modal/Modal';
 import BookToCart from '../../components/BookToCart/BookToCart';
+import { addToCart } from '../../store/actions/cartActions';
 
 class Books extends Component{
     state = {
@@ -66,8 +67,30 @@ class Books extends Component{
         });
     }
 
-    addToCartHandler = (book) => {
+    quantityIncreaseHandler = () => {
+        this.setState(prevState => {
+            return {
+                bookToAdd: {
+                    ...prevState.bookToAdd,
+                    quantity: prevState.bookToAdd.quantity + 1
+                }
+            }
+        })
+    }
 
+    quantityDecreaseHandler = () => {
+        this.setState(prevState => {
+            return {
+                bookToAdd: {
+                    ...prevState.bookToAdd,
+                    quantity: prevState.bookToAdd.quantity - 1
+                }
+            }
+        })
+    }
+
+    addToCartHandler = (book) => {
+        this.props.addToCart(book);
     }
 
     render(){
@@ -82,6 +105,9 @@ class Books extends Component{
                             languageChooseHandler={this.languageChooseHandler}
                             bookToAdd={this.state.bookToAdd}
                             closeModal={this.modalClickedHandler}
+                            quantityIncreaseHandler={this.quantityIncreaseHandler}
+                            quantityDecreaseHandler={this.quantityDecreaseHandler}
+                            addToCartHandler={this.addToCartHandler}
                         />
                     </Modal> : null}
                     <BookList
@@ -99,13 +125,15 @@ class Books extends Component{
 const mapStateToProps = state => {
     return {
         books: state.bookReducer.books,
-        loading: state.bookReducer.loading
+        loading: state.bookReducer.loading,
+        cart: state.cartReducer.cart
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchBooks: (offset) => dispatch(fetchBooks(offset))
+        fetchBooks: (offset) => dispatch(fetchBooks(offset)),
+        addToCart: (book) => dispatch(addToCart(book))
     }
 }
 

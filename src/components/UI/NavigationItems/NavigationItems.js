@@ -21,6 +21,7 @@ const NavigationItems = (props) => (
                 }
             </div>
         </div>
+        <NavigationItem item='Cart' link='/cart' />
         <NavigationItem item='Orders' link='/orders' />
     </div>
 );

@@ -5,7 +5,7 @@
     margin-bottom: 50px;
 }
 
-button{
+.Button{
     margin: 0 2px;
     height: 30px;
     width: 30px;
@@ -19,7 +19,7 @@ button{
     font-weight: 600;
 }
 
-button:disabled{
+.Button:disabled{
     cursor: not-allowed;
 }
 

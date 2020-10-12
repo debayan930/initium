@@ -5,7 +5,7 @@
 
 .BookContent{
     display: inline-block;
-    font-size: 120%;
+    font-size: 140%;
     margin-left: 20px;
 }
 
@@ -14,4 +14,5 @@
     justify-content: center;
     align-items: center;
     font-size: 60%;
+    padding: 5px 0;
 }

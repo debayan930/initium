@@ -5,6 +5,7 @@ import Layout from '../hoc/Layout/Layout';
 import { fetchGenres } from '../store/actions/bookActions';
 import { connect } from 'react-redux';
 import Spinner from '../components/UI/Spinner/Spinner';
+import Cart from './Cart/Cart';
 const Books = lazy(() => import('./Books/Books'));
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Suspense fallback={<Spinner />}>
             <Switch>
               <Route path='/books' exact component={Books} />
+              <Route path='/cart' exact component={Cart} />
             </Switch>
           </Suspense>
         </Layout>

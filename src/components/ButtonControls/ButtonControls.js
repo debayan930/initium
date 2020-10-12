@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../UI/Button/Button';
+import Quantity from '../UI/Quantity/Quantity';
 import classes from './ButtonControls.module.css';
 
 const ButtonControls = (props) => (
@@ -22,13 +23,18 @@ const ButtonControls = (props) => (
             }
             </div>
         </div>
+        <Quantity
+            quantity={props.bookToAdd.quantity}
+            quantityDecreaseHandler={props.quantityDecreaseHandler}
+            quantityIncreaseHandler={props.quantityIncreaseHandler}
+        />
         <label className={classes.Price}>
             {props.bookToAdd.format.price}
         </label>
         <div className={classes.ButtonContainer} style={{
             display: 'block'
         }}>
-            <Button>Add to Cart</Button>
+            <Button addToCartHandler={props.addToCartHandler} book={props.bookToAdd} closeModal={props.closeModal}>Add to Cart</Button>
             <Button cancel={true} closeModal={props.closeModal}>Cancel</Button>
         </div>
     </div>

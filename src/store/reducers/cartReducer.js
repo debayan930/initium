@@ -18,6 +18,34 @@ const reducer = (state = initialState, action) => {
                 cart: state.cart.filter(item => item !== action.payload)
             }
 
+        case actions.INCREASE_ITEM_QUANTITY:
+            return {
+                ...state,
+                cart: state.cart.map(item => {
+                    if(item === action.payload){
+                        let x = item;
+                        x.quantity = x.quantity + 1;
+                        return x;
+                    } else{
+                        return item
+                    }
+                })
+            }
+
+        case actions.DECREASE_ITEM_QUANTITY:
+            return {
+                ...state,
+                cart: state.cart.map(item => {
+                    if(item === action.payload){
+                        let x = item;
+                        x.quantity = x.quantity - 1;
+                        return x;
+                    } else{
+                        return item
+                    }
+                })
+            }
+
         default:
             return state;
     }

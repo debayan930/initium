@@ -14,7 +14,7 @@ const Book = (props) => {
 	        </div>
             <div className={classes.BookContent}>
                 <img
-                    src={`https://robohash.org/${props.book.id}.png?size=150x150&set=set1`}
+                    src={`https://robohash.org/${props.book.id}.png?size=150x150&set=set3`}
                     alt={props.book.id}
                 />
                 <BookInfo book={props.book} />

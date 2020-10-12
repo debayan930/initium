@@ -1,0 +1,18 @@
+.CartItemList{
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 50px;
+}
+
+.Header{
+    display: block;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 170%;
+    padding: 10px 0;
+}
