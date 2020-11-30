@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/debayan930/initium/static/css/main.4b83a682.chunk.css",
+    "main.js": "/debayan930/initium/static/js/main.3b8f7654.chunk.js",
+    "main.js.map": "/debayan930/initium/static/js/main.3b8f7654.chunk.js.map",
+    "runtime-main.js": "/debayan930/initium/static/js/runtime-main.c8b8c67e.js",
+    "runtime-main.js.map": "/debayan930/initium/static/js/runtime-main.c8b8c67e.js.map",
+    "static/css/2.346cbe0d.chunk.css": "/debayan930/initium/static/css/2.346cbe0d.chunk.css",
+    "static/js/2.3c8e7b15.chunk.js": "/debayan930/initium/static/js/2.3c8e7b15.chunk.js",
+    "static/js/2.3c8e7b15.chunk.js.map": "/debayan930/initium/static/js/2.3c8e7b15.chunk.js.map",
+    "static/css/3.34d8af1c.chunk.css": "/debayan930/initium/static/css/3.34d8af1c.chunk.css",
+    "static/js/3.1992f850.chunk.js": "/debayan930/initium/static/js/3.1992f850.chunk.js",
+    "static/js/3.1992f850.chunk.js.map": "/debayan930/initium/static/js/3.1992f850.chunk.js.map",
+    "index.html": "/debayan930/initium/index.html",
+    "precache-manifest.6d1d749bd2a12627552568575dda0764.js": "/debayan930/initium/precache-manifest.6d1d749bd2a12627552568575dda0764.js",
+    "service-worker.js": "/debayan930/initium/service-worker.js",
+    "static/css/2.346cbe0d.chunk.css.map": "/debayan930/initium/static/css/2.346cbe0d.chunk.css.map",
+    "static/css/3.34d8af1c.chunk.css.map": "/debayan930/initium/static/css/3.34d8af1c.chunk.css.map",
+    "static/css/main.4b83a682.chunk.css.map": "/debayan930/initium/static/css/main.4b83a682.chunk.css.map",
+    "static/js/2.3c8e7b15.chunk.js.LICENSE.txt": "/debayan930/initium/static/js/2.3c8e7b15.chunk.js.LICENSE.txt",
+    "static/media/all.css": "/debayan930/initium/static/media/fa-solid-900.8e1ed89b.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8b8c67e.js",
+    "static/css/2.346cbe0d.chunk.css",
+    "static/js/2.3c8e7b15.chunk.js",
+    "static/css/main.4b83a682.chunk.css",
+    "static/js/main.3b8f7654.chunk.js"
+  ]
+}
