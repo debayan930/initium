@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartItemList from '../../components/CartItemsList/CartItemList';
-import { addBookQuantity, removeBookQuantity } from '../../store/actions/cartActions';
 
 const Cart = (props) => {
     return(
@@ -15,11 +14,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addBookQuantity: (book) => dispatch(addBookQuantity(book)),
-        removeBookQuantity: (book) => dispatch(removeBookQuantity(book))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);

@@ -6,6 +6,8 @@ import { fetchGenres } from '../store/actions/bookActions';
 import { connect } from 'react-redux';
 import Spinner from '../components/UI/Spinner/Spinner';
 import Cart from './Cart/Cart';
+import SignUpForm from '../components/UI/SignUpForm';
+import CheckoutSummary from './CheckoutSummary/CheckoutSummary';
 const Books = lazy(() => import('./Books/Books'));
 
 class App extends Component {
@@ -21,6 +23,8 @@ class App extends Component {
             <Switch>
               <Route path='/books' exact component={Books} />
               <Route path='/cart' exact component={Cart} />
+              <Route path='/formik' exact component={SignUpForm} />
+              <Route path='/checkout' exact component={CheckoutSummary} />
             </Switch>
           </Suspense>
         </Layout>

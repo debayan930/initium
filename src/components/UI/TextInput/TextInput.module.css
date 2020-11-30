@@ -1,0 +1,17 @@
+.InputContainer{
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.TextInput{
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.TextInput:focus{
+    outline: 2px solid blue;
+}
+
+.Error{
+    color: red;
+}

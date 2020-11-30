@@ -23,6 +23,7 @@ const NavigationItems = (props) => (
         </div>
         <NavigationItem item='Cart' link='/cart' />
         <NavigationItem item='Orders' link='/orders' />
+        <NavigationItem item='Formik' link='/formik' />
     </div>
 );
 

@@ -14,16 +14,12 @@ export const removeFromCart = (book) => (
     }
 );
 
-export const addBookQuantity = (book) => (
+export const setBookQuantity = (book, quantity) => (
     {
-        type: actions.INCREASE_ITEM_QUANTITY,
-        payload: book
-    }
-);
-
-export const removeBookQuantity = (book) => (
-    {
-        type: actions.DECREASE_ITEM_QUANTITY,
-        payload: book
+        type: actions.SET_BOOK_QUANTITY,
+        payload: {
+            book: book,
+            quantity: quantity
+        }
     }
 );

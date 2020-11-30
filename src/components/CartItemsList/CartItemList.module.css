@@ -16,3 +16,26 @@
     font-size: 170%;
     padding: 10px 0;
 }
+
+.Total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.Checkout{
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 5px 8px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(171, 24, 139);
+    color: white;
+    font-weight: 600;
+}
+
+.Checkout:hover{
+    background-color: rgb(231, 98, 202);
+}
